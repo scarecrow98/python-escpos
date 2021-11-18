@@ -78,12 +78,12 @@ class Usb(Escpos):
         # and detach_kernel_driver().
         # This helps enable this library to work on Windows.
         if self.device.backend.__module__.endswith("libusb1"):
-            check_driver = None
+            check_driver = False
 
-            try:
-                check_driver = self.device.is_kernel_driver_active(0)
-            except NotImplementedError:
-                pass
+            # try:
+            #     check_driver = self.device.is_kernel_driver_active(0)
+            # except NotImplementedError:
+            #     pass
 
             if check_driver is None or check_driver:
                 try:
